@@ -14,7 +14,7 @@ protected:
     vector<vector<Point3D>> wierzcholki=vector<vector<Point3D>>(2,vector<Point3D>(4,Point3D(0,0,0)));                      //2 poziomy po 4 punkty
 
 public:
-    int Rysuj() override;
+    void Rysuj() override;
     void aktualizujPolozenie() override;
     Prostopadloscian();
     //Prostopadloscian():wierzcholki[0][0](-1,-1,-1),wierzcholki[0][1](-1,1,-1),wierzcholki[0][2](1,1,-1),wierzcholki[0][3](1,-1,-1),

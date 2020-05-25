@@ -21,7 +21,7 @@ MacierzObrotu::MacierzObrotu(Wektor<double,3> *wek)
 }
 
 
-void MacierzObrotu::operator=(const Macierz3na3 & macierz)
+MacierzObrotu::MacierzObrotu(const Macierz3na3 & macierz)
 {
     this->tab[0] = macierz[0];
     this->tab[1] = macierz[1];
@@ -33,7 +33,7 @@ void MacierzObrotu::operator=(const Macierz3na3 & macierz)
     }
 }
 
-void MacierzObrotu::operator=(const MacierzKw<double,3> & macierz)
+MacierzObrotu::MacierzObrotu(const MacierzKw<double,3> & macierz)
 {
     Macierz3na3 tmp;
     tmp = macierz;

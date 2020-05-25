@@ -1,5 +1,8 @@
 #include "../inc/Dron.h"
 
+
+
+
 void Dron::plynDoPrzodu(double odleglosc)
 {
     double deltaTime=0;
@@ -11,9 +14,9 @@ void Dron::plynDoPrzodu(double odleglosc)
         do{
         endMeasuring = std::chrono::steady_clock::now();
         elapsedTime = endMeasuring - beginMeasuring;
-        }while(elapsedTime.count()<0.01);
+        }while(elapsedTime.count()<1.0/KLATKI_NA_SEC);
         //std::cout<<"HKKK\n";
-        this->pozycjaSrodka +=(this->macierzObrotu*Wektor3D(0,odleglosc*elapsedTime.count(),0));
+        this->pozycjaSrodka +=(this->macierzObrotu*Wektor3D(0,this->predkosc*elapsedTime.count(),0));
         deltaTime+=elapsedTime.count();
         this->Rysuj();
     }while(deltaTime*this->predkosc<odleglosc);
@@ -40,4 +43,17 @@ void Dron::obrocWOsiZ(double katObrotu)
 void Dron::ustawPredkosc(double predkoscDrona)
 {
     this->predkosc = predkoscDrona;
+}
+
+void Dron::Rysuj()
+{
+    Prostopadloscian::Rysuj();
+    this->wirnikLewy.ustawApi(this->drawingApi);
+    this->wirnikPrawy.ustawApi(this->drawingApi);
+
+    //this->wirnikLewy.pozycjaSrodka = this->pozycjaSrodka + this->wirnikLewy.polozenieWzgledemCialaDrona;
+    this->wirnikLewy.ustawOdPozycjiDrona(this->pozycjaSrodka,this->macierzObrotu);
+    this->wirnikPrawy.ustawOdPozycjiDrona(this->pozycjaSrodka,this->macierzObrotu);
+    this->wirnikLewy.Rysuj();
+    this->wirnikPrawy.Rysuj();
 }

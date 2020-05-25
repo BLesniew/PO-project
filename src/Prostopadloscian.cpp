@@ -1,6 +1,6 @@
 #include "../inc/Prostopadloscian.h"
 
-int Prostopadloscian::Rysuj()
+void Prostopadloscian::Rysuj()
 {
     this->aktualizujPolozenie();
     if(this->id>=0)
@@ -10,8 +10,9 @@ int Prostopadloscian::Rysuj()
 
     this->id = drawingApi->draw_polyhedron(this->wierzcholki,this->kolor);
     drawingApi->redraw();
-    return this->id;
 }
+
+
 
 void Prostopadloscian::aktualizujPolozenie()
 {

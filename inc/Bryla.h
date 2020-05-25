@@ -25,7 +25,7 @@ public:
     //Bryla(MacierzObrotu obrot);
     //Bryla(Wektor3D pozycja, MacierzObrotu obrot);
 
-    virtual int Rysuj() = 0;
+    virtual void Rysuj() = 0;
     virtual void aktualizujPolozenie() = 0;
     Bryla(const Wektor3D & pozycja);
     void ObrocOKat(double alpha);

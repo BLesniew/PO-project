@@ -12,7 +12,8 @@ protected:
     std::string kolor;
 
 public:
-    virtual int Rysuj() = 0;
+    virtual void Rysuj() = 0;
+    void Wymaz();
     void ustawApi(std::shared_ptr<drawNS::Draw3DAPI> api);
     void zmienKolor(std::string kolorObiektu);
     ObiektRysowalny():id(-1){this->kolor = "black";}

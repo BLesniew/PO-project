@@ -10,6 +10,12 @@ Macierz3na3::Macierz3na3(const Wektor3D & wek1,const Wektor3D & wek2,const Wekto
     this->tab[2]=wek3;
 }
 
+Macierz3na3::Macierz3na3(const MacierzKw<double,3> &MKw)
+{
+    this->tab[0] = MKw[0];
+    this->tab[1] = MKw[1];
+    this->tab[2] = MKw[2];
+}
 
 
 /*

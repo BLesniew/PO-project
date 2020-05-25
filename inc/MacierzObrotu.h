@@ -8,8 +8,10 @@ public:
     MacierzObrotu();
     MacierzObrotu(Wektor<double,3> *wek);                                                                          //nie działało dziedziczenie konstruktorów
     MacierzObrotu(Wektor3D wek1,Wektor3D wek2,Wektor3D wek3):Macierz3na3(wek1,wek2,wek3){if(abs(this->wyznacznik()-1>BLAD_PRZYROWNANIA)){std::cerr<<"TO NIE MACIERZ OBROTU"; exit (1);}}
-    void operator=(const Macierz3na3 & macierz);
-    void operator=(const MacierzKw<double,3> & macierz);
+    //void operator=(const Macierz3na3 & macierz);
+    MacierzObrotu(const Macierz3na3 & M3x3);
+    //void operator=(const MacierzKw<double,3> & macierz);
+    MacierzObrotu(const MacierzKw<double,3> &MKw);
 
 };
 

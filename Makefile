@@ -5,11 +5,15 @@ FLAGS = -Wall -pedantic -std=c++14 -iquote inc
 ${TRGDIR}/zad3.out: ${OBJ} ${OBJ}/main.o ${OBJ}/wektor.o ${OBJ}/wektorC.o ${OBJ}/MacierzKw.o\
 		${OBJ}/MacierzKwC.o ${OBJ}/Macierz3na3.o ${OBJ}/MacierzObrotu.o ${OBJ}/Wektor3D.o\
 		${OBJ}/Bryla.o ${OBJ}/ObiektRysowalny.o ${OBJ}/Prostopadloscian.o\
-		${OBJ}/InterfaceDrona.o ${OBJ}/Dron.o ${OBJ}/Dr3D_gnuplot_api.o
+		${OBJ}/InterfaceDrona.o ${OBJ}/Dron.o ${OBJ}/Dr3D_gnuplot_api.o\
+		${OBJ}/graniastoslup6.o ${OBJ}/Wirnik.o ${OBJ}/Plaszczyzna.o\
+		${OBJ}/PoziomMorza.o ${OBJ}/Dno.o
 	g++ -o ${TRGDIR}zad3.out ${OBJ}/main.o ${OBJ}/wektor.o ${OBJ}/wektorC.o ${OBJ}/MacierzKw.o\
 		${OBJ}/MacierzKwC.o ${OBJ}/Macierz3na3.o ${OBJ}/MacierzObrotu.o ${OBJ}/Wektor3D.o\
 		${OBJ}/Bryla.o ${OBJ}/ObiektRysowalny.o ${OBJ}/Prostopadloscian.o\
-		${OBJ}/InterfaceDrona.o ${OBJ}/Dron.o ${OBJ}/Dr3D_gnuplot_api.o -lpthread
+		${OBJ}/InterfaceDrona.o ${OBJ}/Dron.o ${OBJ}/Dr3D_gnuplot_api.o\
+		${OBJ}/graniastoslup6.o ${OBJ}/Wirnik.o ${OBJ}/Plaszczyzna.o\
+		${OBJ}/PoziomMorza.o ${OBJ}/Dno.o -lpthread
 
 ${OBJ}:
 	mkdir ${OBJ}
@@ -56,6 +60,21 @@ ${OBJ}/Dron.o: src/Dron.cpp inc/Dron.h
 ${OBJ}/Dr3D_gnuplot_api.o: src/Dr3D_gnuplot_api.cpp inc/Dr3D_gnuplot_api.hh\
 		inc/Draw3D_api_interface.hh
 	g++ -c ${FLAGS} -o ${OBJ}/Dr3D_gnuplot_api.o src/Dr3D_gnuplot_api.cpp
+
+${OBJ}/graniastoslup6.o: src/graniastoslup6.cpp inc/graniastoslup6.h
+	g++ -c ${FLAGS} -o ${OBJ}/graniastoslup6.o src/graniastoslup6.cpp
+
+${OBJ}/Wirnik.o: src/Wirnik.cpp inc/Wirnik.h
+	g++ -c ${FLAGS} -o ${OBJ}/Wirnik.o src/Wirnik.cpp
+
+${OBJ}/Plaszczyzna.o: src/Plaszczyzna.cpp inc/Plaszczyzna.h
+	g++ -c ${FLAGS} -o ${OBJ}/Plaszczyzna.o src/Plaszczyzna.cpp
+
+${OBJ}/PoziomMorza.o: src/PoziomMorza.cpp inc/PoziomMorza.h
+	g++ -c ${FLAGS} -o ${OBJ}/PoziomMorza.o src/PoziomMorza.cpp
+
+${OBJ}/Dno.o: src/Dno.cpp inc/Dno.h
+	g++ -c ${FLAGS} -o ${OBJ}/Dno.o src/Dno.cpp
 
 
 clear:

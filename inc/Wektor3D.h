@@ -8,6 +8,7 @@ class Wektor3D:public Wektor<double, 3>{
 public:
     using Wektor::Wektor;                                            //uzywa konstruktorow dla wektora
     Wektor3D(double x,double y,double z);
+    Wektor3D(Wektor<double,3> wek);
 };
 
 #endif
