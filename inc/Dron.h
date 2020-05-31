@@ -12,6 +12,8 @@ class Dron:public Prostopadloscian,public InterfaceDrona{
 
 protected:
     double predkosc;
+    double predkoscObrotu;
+    double predkoscObrotuWirnikow;
     Wirnik wirnikLewy;
     Wirnik wirnikPrawy;
 
@@ -19,12 +21,18 @@ public:
     void plynDoPrzodu(double odleglosc,double katWznoszenia)override;
     void plynDoPrzodu(double odleglosc)override;
     void obrocWOsiZ(double katObrotu)override;
+
+    void ObrocOKat(double katWStopniach, Axis osObrotu);
+    void ustawApi(std::shared_ptr<drawNS::Draw3DAPI> api);
+
     void ustawPredkosc(double predkoscDrona);
+    void ustawPredkoscObrotu(double predkoscO);
+    void ustawPredkoscObrotuWirnikow(double predkoscW);
     void Rysuj();
 
     //using Prostopadloscian::Prostopadloscian;
-    Dron():predkosc(2),wirnikLewy(Wektor3D(-1,-1.5,0)),wirnikPrawy(Wektor3D(1,-1.5,0)){}                           //POZYCJE POWINNY BYC BARDZIEJ OPARTE NA OBLICZENIACH
-    Dron(float prdkosc):predkosc(prdkosc),wirnikLewy(Wektor3D(-1,-1.5,0)),wirnikPrawy(Wektor3D(1,-1.5,0)){}                     //przy predkosciach zbyt duzych wzgledem renderowanych klatek na sekundę widać znaczące błedy obliczeniowe
+    Dron():predkosc(2),wirnikLewy(Wektor3D(-this->dlugosc/3,-1.5,0)),wirnikPrawy(Wektor3D(this->dlugosc/3,-1.5,0)),predkoscObrotu(100),predkoscObrotuWirnikow(600){}
+    Dron(float prdkosc):predkosc(prdkosc),wirnikLewy(Wektor3D(-2*this->szerokosc/5,-this->dlugosc/2,0)),wirnikPrawy(Wektor3D(2*this->szerokosc/5,-this->dlugosc/2,0)),predkoscObrotu(100),predkoscObrotuWirnikow(600){}                     //przy predkosciach zbyt duzych wzgledem renderowanych klatek na sekundę widać znaczące błedy obliczeniowe
 };
 
 

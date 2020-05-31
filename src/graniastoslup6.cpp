@@ -47,7 +47,7 @@ void Graniastoslup6::aktualizujPolozenie()
 
 Graniastoslup6::Graniastoslup6()
 {
-    this->odlegloscOdSrodkaPdst = 1;
+    this->odlegloscOdSrodkaPdst = 0.6;
     this->wysokosc = 0.5;
 }
 

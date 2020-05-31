@@ -58,7 +58,7 @@ APIGnuPlot3D::APIGnuPlot3D(double minX, double maxX, double minY, double maxY, d
   }
   else {
     dup2(pipe_fd[0],0);
-    std::cerr << "gnuplot is running" << endl;
+    //std::cerr << "gnuplot is running" << endl;
     execlp("gnuplot","gnuplot",NULL);
   }
 }
@@ -90,7 +90,7 @@ void APIGnuPlot3D::draw_all_shapes() {
     if (!color.compare("error")) {
       color = translate_color("black");
       std::cerr << "Shape nr " << itel->first << " has invalid color.\nUsing black color to draw it." << endl;
-    } 
+    }
     ss << "\'-\' using 1:2:3 with lines lt 1 lw 3 " << color;
     if (++itel != shapes.end())
       ss << ",";
@@ -103,7 +103,7 @@ void APIGnuPlot3D::draw_all_shapes() {
       }
       ss << endl;
     }
-    ss<< "e" << endl;	
+    ss<< "e" << endl;
   }
   ss << "pause -1" << endl;
   command = ss.str();
@@ -161,7 +161,7 @@ uint APIGnuPlot3D::draw_polyhedron(const vector<vector<Point3D> > & points_map, 
     ltmp.push_back(el[0]);
     tmp.push_back(ltmp);
   }
-  return draw_surface(tmp,color);  
+  return draw_surface(tmp,color);
 }
 
 uint APIGnuPlot3D::draw_surface(const vector<vector<Point3D> > & points_map, const string & color ) {
@@ -175,7 +175,7 @@ uint APIGnuPlot3D::draw_surface(const vector<vector<Point3D> > & points_map, con
   if (refresh_rate_ms == 0) {
     draw_all_shapes();
   }
-  return tmp;  
+  return tmp;
 }
 
 void APIGnuPlot3D::erase_shape(uint id) {
@@ -191,7 +191,7 @@ void APIGnuPlot3D::change_shape_color(uint id, const string & color) {
   }
   if (refresh_rate_ms == 0) {
     draw_all_shapes();
-  }  
+  }
 }
 
 void APIGnuPlot3D::stop_drawing_proces() {

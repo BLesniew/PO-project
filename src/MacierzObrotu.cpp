@@ -18,6 +18,10 @@ MacierzObrotu::MacierzObrotu(Wektor<double,3> *wek)
     std::cerr<<"WYZNACZNIK ROWNY "<<this->wyznacznik()<<", TO NIE MACIERZ OBROTU\n";
     exit (1);
     }
+    if(this->transponowane()* *this != Macierz3na3(Wektor3D(1,0,0),Wektor3D(0,1,0),Wektor3D(0,0,1)))
+    {
+    std::cerr<<"MACIERZ NIE JEST ORTOGONALNA, WIĘC TO NIE MACIERZ OBROTU";
+    }
 }
 
 
@@ -28,8 +32,12 @@ MacierzObrotu::MacierzObrotu(const Macierz3na3 & macierz)
     this->tab[2] = macierz[2];
     if(abs(this->wyznacznik()-1)>BLAD_PRZYROWNANIA)
     {
-    std::cerr<<"WYZNACZNIK ROWNY "<<this->wyznacznik(Gauss)<<", TO NIE MACIERZ OBROTU\n";
+    std::cerr<<"WYZNACZNIK ROWNY "<<this->wyznacznik()<<", TO NIE MACIERZ OBROTU\n";
     exit (2);
+    }
+    if(this->transponowane()* *this != Macierz3na3(Wektor3D(1,0,0),Wektor3D(0,1,0),Wektor3D(0,0,1)))
+    {
+    std::cerr<<"MACIERZ NIE JEST ORTOGONALNA, WIĘC TO NIE MACIERZ OBROTU";
     }
 }
 
