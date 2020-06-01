@@ -7,13 +7,15 @@ ${TRGDIR}/zad3.out: ${OBJ} ${OBJ}/main.o ${OBJ}/wektor.o ${OBJ}/wektorC.o ${OBJ}
 		${OBJ}/Bryla.o ${OBJ}/ObiektRysowalny.o ${OBJ}/Prostopadloscian.o\
 		${OBJ}/InterfaceDrona.o ${OBJ}/Dron.o ${OBJ}/Dr3D_gnuplot_api.o\
 		${OBJ}/graniastoslup6.o ${OBJ}/Wirnik.o ${OBJ}/Plaszczyzna.o\
-		${OBJ}/PoziomMorza.o ${OBJ}/Dno.o
+		${OBJ}/PoziomMorza.o ${OBJ}/Dno.o ${OBJ}/InterfejsPrzeszkody.o\
+		${OBJ}/PrzeszkodaProstop.o
 	g++ -o ${TRGDIR}zad3.out ${OBJ}/main.o ${OBJ}/wektor.o ${OBJ}/wektorC.o ${OBJ}/MacierzKw.o\
 		${OBJ}/MacierzKwC.o ${OBJ}/Macierz3na3.o ${OBJ}/MacierzObrotu.o ${OBJ}/Wektor3D.o\
 		${OBJ}/Bryla.o ${OBJ}/ObiektRysowalny.o ${OBJ}/Prostopadloscian.o\
 		${OBJ}/InterfaceDrona.o ${OBJ}/Dron.o ${OBJ}/Dr3D_gnuplot_api.o\
 		${OBJ}/graniastoslup6.o ${OBJ}/Wirnik.o ${OBJ}/Plaszczyzna.o\
-		${OBJ}/PoziomMorza.o ${OBJ}/Dno.o -lpthread
+		${OBJ}/PoziomMorza.o ${OBJ}/Dno.o ${OBJ}/InterfejsPrzeszkody.o\
+		${OBJ}/PrzeszkodaProstop.o -lpthread
 
 ${OBJ}:
 	mkdir ${OBJ}
@@ -75,6 +77,12 @@ ${OBJ}/PoziomMorza.o: src/PoziomMorza.cpp inc/PoziomMorza.h
 
 ${OBJ}/Dno.o: src/Dno.cpp inc/Dno.h
 	g++ -c ${FLAGS} -o ${OBJ}/Dno.o src/Dno.cpp
+
+${OBJ}/InterfejsPrzeszkody.o: src/InterfejsPrzeszkody.cpp inc/InterfejsPrzeszkody.h
+	g++ -c ${FLAGS} -o ${OBJ}/InterfejsPrzeszkody.o src/InterfejsPrzeszkody.cpp
+
+${OBJ}/PrzeszkodaProstop.o: src/PrzeszkodaProstop.cpp inc/PrzeszkodaProstop.h
+	g++ -c ${FLAGS} -o ${OBJ}/PrzeszkodaProstop.o src/PrzeszkodaProstop.cpp
 
 
 clear:

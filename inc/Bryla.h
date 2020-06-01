@@ -13,6 +13,9 @@ enum Axis{OX,OY,OZ};
 class Bryla:public ObiektRysowalny{
 
 protected:
+static int ileStworzonoB;
+static int ileIstniejeB;
+
 MacierzObrotu macierzObrotu;
 Wektor3D pozycjaSrodka;
 
@@ -21,6 +24,11 @@ void Przenies(const Wektor3D & wektorPrzesuniecia);
 
 public:
     Bryla();
+
+    static int zwrocLiczbeIstniejacych();
+    static int zwrocLiczbePowstalych();
+    Bryla(Bryla & tmp){*this=tmp;ileIstniejeB++;ileStworzonoB++;}
+    ~Bryla(){ileIstniejeB--;}
 
     //Bryla(MacierzObrotu obrot);
     //Bryla(Wektor3D pozycja, MacierzObrotu obrot);

@@ -112,3 +112,18 @@ void Dron::Rysuj()
     this->wirnikLewy.Rysuj();
     this->wirnikPrawy.Rysuj();
 }
+
+double Dron::zwrocPromien()
+{
+    return sqrt(this->szerokosc*this->szerokosc/4+this->wysokosc*this->wysokosc/4+this->dlugosc*this->dlugosc/4);
+}
+
+Wektor3D Dron::zwrocPozycje()
+{
+    return this->pozycjaSrodka;
+}
+
+bool Dron::czyKolizja(std::shared_ptr<InterfaceDrona> dronSterowany)
+{
+    return (this->zwrocPromien()+dronSterowany->zwrocPromien()>=(this->zwrocPozycje()-dronSterowany->zwrocPozycje()).dlugosc());
+}

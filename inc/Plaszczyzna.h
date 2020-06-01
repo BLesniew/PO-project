@@ -8,9 +8,9 @@ using drawNS::Point3D;
 class Plaszczyzna:public ObiektRysowalny{
 
 protected:
-    float wspolrzednaZ;
-    float wielkoscPlaszczyzny;
-    float wielkoscKratki;
+    double wspolrzednaZ;
+    double wielkoscPlaszczyzny;
+    double wielkoscKratki;
 
 
 

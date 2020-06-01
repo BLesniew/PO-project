@@ -14,6 +14,8 @@
 template<class TYP,int ROZMIAR>
 class Wektor{
 protected:
+    static int ileStworzono;
+    static int ileIstnieje;
     TYP tab[ROZMIAR];
 
 public:
@@ -21,6 +23,9 @@ public:
     Wektor();
     //Wektor(TYP x,TYP y,TYP z);                 //nie ma sensu
     Wektor(TYP *tab);
+
+    Wektor(const Wektor<TYP,ROZMIAR> & tmp){*this = tmp;ileIstnieje++;ileStworzono++;}
+    ~Wektor(){ileIstnieje--;}
 
 
 

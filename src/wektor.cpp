@@ -1,5 +1,6 @@
 #include "../inc/wektor.h"
 
+
 //KONSTRUKTORY
 template<class TYP, int ROZMIAR>
 Wektor<TYP,ROZMIAR>::Wektor()
@@ -8,6 +9,8 @@ Wektor<TYP,ROZMIAR>::Wektor()
     {
             this->tab[i]=0;
     }
+    ileStworzono++;
+    ileIstnieje++;
 }
 /*
 Wektor::Wektor(double x, double y, double z)
@@ -24,6 +27,8 @@ Wektor<TYP,ROZMIAR>::Wektor(TYP *tab)                            //dla tablic mn
     {
         this->tab[i]=tab[i];
     }
+    ileStworzono++;
+    ileIstnieje++;
 }
 
 //OPERATORY

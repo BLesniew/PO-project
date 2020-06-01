@@ -19,3 +19,9 @@ void PoziomMorza::Rysuj()
     this->id = this->drawingApi->draw_surface(punkty,this->kolor);
     this->drawingApi->redraw();
 }
+
+
+bool PoziomMorza::czyKolizja(std::shared_ptr<InterfaceDrona> dronSterowany)
+{
+    return (dronSterowany->zwrocPozycje()[2]>=this->wspolrzednaZ);
+}

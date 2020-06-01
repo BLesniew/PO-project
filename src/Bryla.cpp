@@ -1,6 +1,7 @@
 #include "../inc/Bryla.h"
 
-
+int Bryla::ileStworzonoB = 0;
+int Bryla::ileIstniejeB = 0;
 
 
 void Bryla::ObrocOKat(double katWStopniach, Axis osObrotu)
@@ -42,4 +43,18 @@ Bryla::Bryla()
 {
     this->pozycjaSrodka = Wektor3D();
     this->macierzObrotu = MacierzObrotu();
+    ileIstniejeB++;
+    ileStworzonoB++;
 }
+
+
+int Bryla::zwrocLiczbeIstniejacych()
+{
+    return ileIstniejeB;
+}
+
+int Bryla::zwrocLiczbePowstalych()
+{
+    return ileStworzonoB;
+}
+

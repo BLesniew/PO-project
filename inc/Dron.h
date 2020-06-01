@@ -4,11 +4,13 @@
 #include "InterfaceDrona.h"
 #include "Prostopadloscian.h"
 #include "Wirnik.h"
+#include "InterfejsPrzeszkody.h"
+
 #include <chrono>
 
 #define KLATKI_NA_SEC 60
 
-class Dron:public Prostopadloscian,public InterfaceDrona{
+class Dron:public Prostopadloscian,public InterfaceDrona, public InterfacePrzeszody{
 
 protected:
     double predkosc;
@@ -30,9 +32,16 @@ public:
     void ustawPredkoscObrotuWirnikow(double predkoscW);
     void Rysuj();
 
+    double zwrocPromien()override;
+    Wektor3D zwrocPozycje()override;
+
     //using Prostopadloscian::Prostopadloscian;
-    Dron():predkosc(2),wirnikLewy(Wektor3D(-this->dlugosc/3,-1.5,0)),wirnikPrawy(Wektor3D(this->dlugosc/3,-1.5,0)),predkoscObrotu(100),predkoscObrotuWirnikow(600){}
-    Dron(float prdkosc):predkosc(prdkosc),wirnikLewy(Wektor3D(-2*this->szerokosc/5,-this->dlugosc/2,0)),wirnikPrawy(Wektor3D(2*this->szerokosc/5,-this->dlugosc/2,0)),predkoscObrotu(100),predkoscObrotuWirnikow(600){}                     //przy predkosciach zbyt duzych wzgledem renderowanych klatek na sekundę widać znaczące błedy obliczeniowe
+    Dron():predkosc(2),wirnikLewy(Wektor3D(-2*this->szerokosc/5,-this->dlugosc/2,0)),
+        wirnikPrawy(Wektor3D(2*this->szerokosc/5,-this->dlugosc/2,0)),predkoscObrotu(100),predkoscObrotuWirnikow(600){}
+    Dron(double prdkosc):predkosc(prdkosc),wirnikLewy(Wektor3D(-2*this->szerokosc/5,-this->dlugosc/2,0)),
+        wirnikPrawy(Wektor3D(2*this->szerokosc/5,-this->dlugosc/2,0)),predkoscObrotu(100),predkoscObrotuWirnikow(600){}                     //przy predkosciach zbyt duzych wzgledem renderowanych klatek na sekundę widać znaczące błedy obliczeniowe
+
+    bool czyKolizja(std::shared_ptr<InterfaceDrona> dronSterowany)override;
 };
 
 
