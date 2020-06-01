@@ -22,6 +22,7 @@ int main()
     std::vector<std::shared_ptr<Dron>> kolekcjaDronow;
     std::vector<std::shared_ptr<InterfacePrzeszody>> kolekcjaPrzeszkod;
     std::shared_ptr<PrzeszkodaProstop> tmpPrz;
+    std::shared_ptr<Dron>dronTmp;
 
 
 
@@ -86,8 +87,9 @@ int main()
         cout<<"\nWybierz akcję:\n";
         cout<<"p - plyn do przodu pod zadanym kątem\n";
         cout<<"o - obróć w miejscu o zadany kąt\n";
-        cout<<"q - wyjdź z aplikacji\n";
         cout<<"s - wyswietl statystyki\n";
+        cout<<"z - zmiana drona\n";
+        cout<<"q - wyjdź z aplikacji\n";
 
 
         cin>>wybor;
@@ -127,6 +129,18 @@ int main()
                 }
             }
 
+            break;
+
+            case 'z':
+            cout<<"Na ktorego drona zmienic (podaj numer)\n";
+            cin>>wybor2;
+            dronTmp = dronSterowany;
+            dronSterowany = kolekcjaDronow[stoi(wybor2)];
+            kolekcjaDronow[stoi(wybor2)] = dronTmp;
+            dronSterowany->zmienKolor("red");
+            dronSterowany->Rysuj();
+            kolekcjaDronow[stoi(wybor2)]->zmienKolor("black");
+            kolekcjaDronow[stoi(wybor2)]->Rysuj();
             break;
 
             case 'q':
